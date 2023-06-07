@@ -1,0 +1,212 @@
+:root {
+    --main-color: hsl(259, 100%, 65%);
+    --main-red: hsl(0, 100%, 67%);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    min-height: calc(100vh + 150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 94%);
+}
+img {
+    max-width: 100%;
+}
+main {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px #00000005;
+}
+main form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+main form::before {
+    content: "";
+    background-color: hsl(0, 0%, 94%);
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0.5px;
+}
+main form .input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+main form .input label {
+    color: hsl(0, 1%, 44%);
+    font-size: 1rem;
+}
+main form .input input {
+    border: 1px solid hsl(0, 0%, 94%);
+    border-radius: 7px;
+    font-size: 2rem;
+    transition: 0.3s;
+    color: hsl(0, 0%, 8%);
+    
+}
+main form .input input::placeholder {
+    color: hsl(0, 1%, 44%);
+}
+main form .input input:focus {
+    border-color: var(--main-color);
+    outline: none;
+    caret-color: var(--main-color);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+main form .input.failed label {
+    color: var(--main-red);
+}
+main form .input.failed input {
+    border-color: var(--main-red);
+}
+main form .input.failed.invalid:has(input[id="day-input"])::before {
+    content: "Must be a valid day";
+}
+main form .input.failed.invalid:has(input[id="month-input"])::before {
+    content: "Must be a valid month";
+}
+main form .input.failed.invalid:has(input[id="year-input"])::before {
+    content: "Must be in the past";
+}
+main form .input.failed.empty::before {
+    content: "This field is required";
+}
+main form .input.failed.invalid::before,
+main form .input.failed.empty::before {
+    color: var(--main-red);
+    position: absolute;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(25px);
+    bottom: -25px;
+    left: 0;
+    animation: pop-up 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes pop-up {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+main form button {
+    position: absolute;
+    top: 100%;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+main form button:hover {
+    background-color:  hsl(0, 0%, 8%);
+}
+main #result {
+    font-style: italic;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main #result span:not(.time) {
+    color: var(--main-color);
+    
+}
+@media (max-width: 900px) {
+    main {
+        width: 340px;
+        height: 480px;
+        padding: 25px;
+        border-bottom-right-radius: 90px;
+    }
+    main form {
+        padding-bottom: 60px;
+        margin-bottom: 50px;
+    }
+    main .input {
+        margin-right: 10px;
+    }
+    main form .input label {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+    main form .input input {
+        width: 90px;
+        padding: 10px;
+        font-size: 1.35rem;
+    }
+    main form button {
+        width: 60px;
+        height: 60px;
+        padding: 15px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    main #result {
+        font-size: 3rem;
+    }
+    main #result .output {
+        margin-right: 10px
+    }
+}
+@media (min-width: 901px) {
+    main {
+        width: 840px;
+        height: 650px;
+        padding: 55px;
+        border-bottom-right-radius: 190px;
+    }
+    main form {
+        padding-bottom: 45px;
+    }
+    main form .input {
+        margin-right: 30px;
+    }
+    main form .input label {
+        letter-spacing: 2px;
+    }
+    main form .input input {
+        width: 155px;
+        padding: 10px 20px;
+    }
+    main form button {
+        width: 90px;
+        height: 90px;
+        right: 0;
+        cursor: pointer;
+        transform: translateY(-50%);
+    }
+    main #result {
+        font-size: 6.5rem;
+    }
+    main #result span:not(.time) {
+        letter-spacing: 15px;
+    }
+    main #result .results {
+        height: 120px;
+    }
+}
