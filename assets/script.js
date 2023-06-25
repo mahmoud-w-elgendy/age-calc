@@ -6,7 +6,7 @@ let outputs = document.querySelectorAll(".output");
 
 submitBtn.addEventListener("click", function(e) {
   e.preventDefault();
-  let currentDate = new date();
+  let currentDate = new Date();
   let inputText = [];
   let failed = false;
   for(let e of inputHolders) {
