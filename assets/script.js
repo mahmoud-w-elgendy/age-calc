@@ -6,7 +6,7 @@ let outputs = document.querySelectorAll(".output");
 
 submitBtn.addEventListener("click", function(e) {
   e.preventDefault();
-  let currentDate = Date.now();
+  let currentDate = new date();
   let inputText = [];
   let failed = false;
   for(let e of inputHolders) {
@@ -44,20 +44,19 @@ submitBtn.addEventListener("click", function(e) {
       e.classList.add("failed");
     }
   } else {
-    let inputDate = (new Date(year, month - 1, day)).getTime();
-    let dayCount = (currentDate - inputDate) / 1000 / 60 / 60 / 24;
-    let yearCount = Math.floor(dayCount / 365.25);
-    let monthCount = 0;
-    dayCount %= 365.25;
-    for(let currentMonth = 0; currentMonth < 12; ++currentMonth){
-      if(dayCount >= daysInMonth[currentMonth]) {
-        ++monthCount;
-        dayCount -= daysInMonth[currentMonth];
-      } else {
-        break;
-      }
+    year % 4 ? daysInMonths[1] = 28: daysInMonth[1] = 29;
+    let yearCount = currentDate.getFullYear() - year;
+    let monthCount = currentDate.getMonth() - month - 1;
+    let dayCount = currentDate.getDate - day;
+    if(currentDate.getDate < day) {
+      --monthCount;
+      dayCount += daysInMonth[month - 1];
     }
-    outputDateInfo = [yearCount, monthCount, Math.floor(dayCount)];
+    if(currentDate.getMonth() < month - 1) {
+      --yearCount;
+      monthsCount += 12;
+    }
+    outputDateInfo = [yearCount, monthCount, dayCount];
     for(let i = 0; i < 3; ++i){
       animateValue(outputs[i], 0, outputDateInfo[i], 900);
     }
