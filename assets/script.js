@@ -47,7 +47,7 @@ submitBtn.addEventListener("click", function(e) {
     year % 4 ? daysInMonth[1] = 28: daysInMonth[1] = 29;
     let yearCount = currentDate.getFullYear() - year;
     let monthCount = currentDate.getMonth() - month - 1;
-    let dayCount = currentDate.getDate - day;
+    let dayCount = currentDate.getDate() - day;
     if(currentDate.getDate < day) {
       --monthCount;
       dayCount += daysInMonth[month - 1];
@@ -56,7 +56,7 @@ submitBtn.addEventListener("click", function(e) {
       --yearCount;
       monthCount += 12;
     }
-    outputDateInfo = [yearCount, monthCount, dayCount];
+    outputDateInfo = [yearCount, monthCount + 1, dayCount];
     for(let i = 0; i < 3; ++i){
       animateValue(outputs[i], 0, outputDateInfo[i], 900);
     }
