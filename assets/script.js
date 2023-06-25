@@ -48,7 +48,7 @@ submitBtn.addEventListener("click", function(e) {
     let yearCount = currentDate.getFullYear() - year;
     let monthCount = currentDate.getMonth() - month - 1;
     let dayCount = currentDate.getDate() - day;
-    if(currentDate.getDate < day) {
+    if(currentDate.getDate() < day) {
       --monthCount;
       dayCount += daysInMonth[month - 1];
     }
