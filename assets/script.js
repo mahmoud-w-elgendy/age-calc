@@ -44,7 +44,7 @@ submitBtn.addEventListener("click", function(e) {
       e.classList.add("failed");
     }
   } else {
-    year % 4 ? daysInMonths[1] = 28: daysInMonth[1] = 29;
+    year % 4 ? daysInMonth[1] = 28: daysInMonth[1] = 29;
     let yearCount = currentDate.getFullYear() - year;
     let monthCount = currentDate.getMonth() - month - 1;
     let dayCount = currentDate.getDate - day;
@@ -54,7 +54,7 @@ submitBtn.addEventListener("click", function(e) {
     }
     if(currentDate.getMonth() < month - 1) {
       --yearCount;
-      monthsCount += 12;
+      monthCount += 12;
     }
     outputDateInfo = [yearCount, monthCount, dayCount];
     for(let i = 0; i < 3; ++i){
