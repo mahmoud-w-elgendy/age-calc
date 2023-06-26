@@ -20,7 +20,7 @@ submitBtn.addEventListener("click", function(e) {
   }
   let [day, month, year] = inputText;
   let dateInfo = [day, month, year];
-  
+  year % 4 ? daysInMonth[1] = 28: daysInMonth[1] = 29;
   for(let i = 0; i < dateInfo.length; i++) {
     if(!(dateInfo[i] != "")) {
       failed = true;
@@ -44,7 +44,6 @@ submitBtn.addEventListener("click", function(e) {
       e.classList.add("failed");
     }
   } else {
-    year % 4 ? daysInMonth[1] = 28: daysInMonth[1] = 29;
     let yearCount = currentDate.getFullYear() - year;
     let monthCount = currentDate.getMonth() - month - 1;
     let dayCount = currentDate.getDate() - day;
