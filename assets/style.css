@@ -172,6 +172,10 @@ main #result span:not(.time) {
     main #result .output {
         margin-right: 10px
     }
+    main form .input.failed.invalid::before,
+    main form .input.failed.empty::before {
+        font-size: 0.7rem;
+    }
 }
 @media (min-width: 901px) {
     main {
