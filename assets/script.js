@@ -55,7 +55,7 @@ submitBtn.addEventListener("click", function(e) {
       --yearCount;
       monthCount += 12;
     }
-    outputDateInfo = [yearCount, monthCount + 1, dayCount];
+    outputDateInfo = [yearCount, monthCount + 2, dayCount];
     for(let i = 0; i < 3; ++i){
       animateValue(outputs[i], 0, outputDateInfo[i], 900);
     }
